@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ONEWAVE — AI that ships</title>
+  <meta name="description" content="ONEWAVE integrates premium, production-grade AI into your business — copilots, document automation, knowledge search, forecasting." />
+  <meta name="theme-color" content="#0a0a0a" />
+  <style>
+    :root{
+      --bg:#ffffff; --ink:#0a0a0a; --muted:#5f6368; --hair:#e7e7ea;
+      --dark:#0b0b10; --accent:#0077ff; --accent2:#4da6ff;
+      --radius:22px; --max:1220px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font:500 clamp(16px,1.35vw,18px)/1.58 -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Inter, Roboto, Arial, sans-serif; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;}
+    img{display:block;max-width:100%}
+    a{color:inherit;text-decoration:none}
+    .container{width:min(var(--max),92vw);margin-inline:auto}
+    .navwrap{position:sticky;top:0;z-index:50;backdrop-filter:saturate(180%) blur(12px);background:rgba(255,255,255,.76);border-bottom:1px solid #f1f2f5}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+    .brand{display:flex;gap:10px;align-items:center}
+    .brand img{width:26px;height:26px;border-radius:6px;display:none; object-fit:contain}
+    .wordmark{font-weight:800;letter-spacing:.2px}
+    .menu{display:none;gap:18px;align-items:center;opacity:.95}
+    .pill{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;border:1px solid #cfd3d9;}
+    .cta{background:#fff}
+    @media(min-width:940px){.menu{display:flex}}
+    .hero{position:relative;overflow:hidden;background:linear-gradient(#fafbff,#f6f7fb);}
+    .hwrap{padding:56px 0 38px; text-align:center}
+    .sublogo{margin:0 auto 12px; width:72px; height:72px; border-radius:20px; 
+      background:conic-gradient(from 210deg at 50% 50%, #66b2ff, #1976ff, #66b2ff);
+      filter:drop-shadow(0 20px 60px rgba(25,118,255,.35)); display:flex; align-items:center; justify-content:center}
+    .sublogo img{width:48px;height:48px;object-fit:contain;display:none;}
+    h1{font-size:clamp(34px,7.2vw,72px);line-height:1.04;letter-spacing:-.02em;margin:8px 0 8px}
+    .lead{font-size:clamp(16px,4.2vw,22px);color:#1d1e22;opacity:.92;max-width:780px;margin:0 auto 18px}
+    .buttons{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:10px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;font-weight:700;border-radius:999px;padding:14px 20px;box-shadow:0 1px 0 rgba(0,0,0,.04)}
+    .btn.primary{background:#0077ff;color:#fff}
+    .btn.ghost{border:1px solid #cfd3d9;background:#fff}
+    .flare{position:absolute;inset:auto;pointer-events:none;filter:blur(60px);opacity:.35}
+    .flare.a{width:520px;height:520px;background:radial-gradient(closest-side, rgba(0,119,255,.35), transparent 70%);left:-140px;top:-180px}
+    .flare.b{width:680px;height:680px;background:radial-gradient(closest-side, rgba(120,200,255,.28), transparent 70%);right:-220px;top:-140px}
+    section{padding:42px 0;border-top:1px solid #f1f2f5}
+    .shelf{display:grid;grid-template-columns:1fr;gap:18px;align-items:center}
+    .shelf h2{font-size:clamp(22px,5.2vw,40px);line-height:1.1;margin:0 0 8px}
+    .shelf p{font-size:clamp(15px,3.6vw,19px);color:#2a2a30;opacity:.95}
+    .art{aspect-ratio:4/3;border-radius:28px;background:#fff;border:1px solid #eceef3;overflow:hidden;position:relative;box-shadow:0 30px 80px rgba(0,0,0,.06)}
+    .orb{position:absolute;inset:auto;border-radius:50%;filter:blur(28px)}
+    .orb.blue{width:420px;height:420px;background:radial-gradient(closest-side, #65b3ff, rgba(255,255,255,0) 70%);left:-90px;top:-80px}
+    .orb.cyan{width:540px;height:540px;background:radial-gradient(closest-side, #8ed6ff, rgba(255,255,255,0) 72%);right:-120px;bottom:-120px}
+    .dark{background:#0b0b10;color:#eef1f4;border-top:none}
+    .dark h2{color:#fff}
+    .dark p{color:#cfd3da}
+    .art.darkcard{background:linear-gradient(180deg,#0f1116,#0b0d12);border-color:#171922}
+    .ring{position:absolute;inset:0;margin:auto;width:72%;height:72%;border-radius:50%;
+      background:conic-gradient(#4da6ff,#0077ff,#4da6ff);
+      -webkit-mask:radial-gradient(circle at 50% 50%, transparent 54%, black 55%);
+              mask:radial-gradient(circle at 50% 50%, transparent 54%, black 55%);
+      filter:drop-shadow(0 30px 90px rgba(77,166,255,.4))}
+    .grid{display:grid;grid-template-columns:1fr;gap:14px;margin-top:10px}
+    .card{padding:18px;border:1px solid #eceef3;border-radius:18px;background:#fff}
+    .card h3{margin:0 0 6px;font-size:1.05rem}
+    .card p{margin:0;color:#2a2a30;opacity:.95}
+    @media(min-width:820px){.shelf{grid-template-columns:1.1fr .9fr} .grid{grid-template-columns:repeat(3,1fr)}}
+    .contact{display:grid;gap:12px}
+    .input, textarea{width:100%;border:1px solid #dfe3ea;border-radius:14px;padding:12px 13px;font:inherit;background:#fff}
+    textarea{min-height:120px}
+    .send{margin-top:8px}
+    footer{border-top:1px solid #eef0f4;padding:20px 0;color:#6b7077;text-align:center}
+  </style>
+</head>
+<body>
+  <div class="navwrap">
+    <div class="container nav">
+      <div class="brand">
+        <img src="" alt="ONEWAVE logo" />
+        <div class="wordmark">ONEWAVE</div>
+      </div>
+      <div class="menu">
+        <a class="pill" href="#solutions">Solutions</a>
+        <a class="pill" href="#work">How we work</a>
+        <a class="pill" href="#cases">Case studies</a>
+        <a class="pill cta" href="#contact">Contact</a>
+      </div>
+    </div>
+  </div>
+  <section class="hero">
+    <div class="flare a"></div><div class="flare b"></div>
+    <div class="container hwrap">
+      <div class="sublogo"><img src="" alt=""></div>
+      <h1>AI for business. Beautifully integrated.</h1>
+      <p class="lead">We design, build, and operate production AI — copilots, knowledge search, document automation — with security and ROI at the core.</p>
+      <div class="buttons">
+        <a class="btn primary" href="#contact">Talk to us</a>
+        <a class="btn ghost" href="#solutions">See capabilities</a>
+      </div>
+    </div>
+  </section>
+  <section id="solutions">
+    <div class="container shelf">
+      <div>
+        <h2>Copilots, automation & search — shipped, not demoed.</h2>
+        <p>Tailored AI that your teams actually use: support copilots, sales assistants, document pipelines, and secure RAG over your private knowledge.</p>
+        <div class="grid">
+          <div class="card">
+            <h3>Support Copilot</h3>
+            <p>Deflect Tier‑1 and draft perfect replies in Zendesk/Intercom. Lower AHT, higher CSAT.</p>
+          </div>
+          <div class="card">
+            <h3>Document Automation</h3>
+            <p>Intake → classify → extract → route. Invoices, claims, KYC, RFQs. Human-in-the-loop ready.</p>
+          </div>
+          <div class="card">
+            <h3>Knowledge Search (RAG)</h3>
+            <p>Accurate answers over SOPs, policies, and contracts with permissions and caching.</p>
+          </div>
+        </div>
+      </div>
+      <div class="art">
+        <div class="orb blue"></div>
+        <div class="orb cyan"></div>
+      </div>
+    </div>
+  </section>
+  <section id="work" class="dark">
+    <div class="container shelf">
+      <div>
+        <h2>From discovery to scale — a clear path to value.</h2>
+        <p>Four disciplined phases keep risk low and outcomes high.</p>
+        <div class="grid">
+          <div class="card" style="background:transparent;border-color:#262a33;color:#cfd3da">
+            <h3>1) Discovery (1–2w)</h3>
+            <p>Opportunity map, data readiness, success metrics, pilot plan.</p>
+          </div>
+          <div class="card" style="background:transparent;border-color:#262a33;color:#cfd3da">
+            <h3>2) Pilot (4–6w)</h3>
+            <p>Production-like PoV with guardrails, analytics, and ROI model.</p>
+          </div>
+          <div class="card" style="background:transparent;border-color:#262a33;color:#cfd3da">
+            <h3>3) Build (8–12w)</h3>
+            <p>Integrations, dashboards, observability, playbooks, hand-off.</p>
+          </div>
+        </div>
+      </div>
+      <div class="art darkcard">
+        <div class="ring"></div>
+      </div>
+    </div>
+  </section>
+  <section id="cases">
+    <div class="container shelf">
+      <div>
+        <h2>Proven impact.</h2>
+        <p>Selected outcomes from recent engagements.</p>
+        <div class="grid">
+          <div class="card">
+            <h3>Retail support</h3>
+            <p>–24% handle time, +1.1p CSAT in 6 weeks with secure RAG + macros.</p>
+          </div>
+          <div class="card">
+            <h3>B2B quoting</h3>
+            <p>3× faster turnaround, fewer errors via extraction + validation loops.</p>
+          </div>
+          <div class="card">
+            <h3>Ops knowledge</h3>
+            <p>First‑contact resolution up; onboarding time down with private search.</p>
+          </div>
+        </div>
+      </div>
+      <div class="art">
+        <div class="orb blue"></div>
+        <div class="orb cyan"></div>
+      </div>
+    </div>
+  </section>
+  <section id="contact">
+    <div class="container shelf" style="grid-template-columns:1fr">
+      <div>
+        <h2>Let’s talk.</h2>
+        <p>Tell us about your use case — we’ll reply within one business day.</p>
+        <div class="grid" style="grid-template-columns:1fr 1fr">
+          <div class="card">
+            <p><strong>Email</strong><br><a href="mailto:paul@onewave.run">paul@onewave.run</a></p>
+          </div>
+          <div class="card">
+            <p><strong>Phone</strong><br><a href="tel:+16092556751">+1 609 255 6751</a></p>
+          </div>
+        </div>
+        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="contact" style="margin-top:12px">
+          <input class="input" name="name" placeholder="Your name" required>
+          <input class="input" type="email" name="email" placeholder="Work email" required>
+          <textarea name="message" placeholder="What problem are we solving?" required></textarea>
+          <button class="btn primary send">Send</button>
+        </form>
+      </div>
+    </div>
+  </section>
+  <footer>
+    © 2025 ONEWAVE LLC · Based in the USA
+  </footer>
+</body>
+</html>
